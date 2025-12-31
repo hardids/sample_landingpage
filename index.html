@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리움한방네트워크 - Brand & Consult</title>
+    <meta name="description" content="한방의료기관의 High-end 브랜드, 리움한방병원&리움한의원. 성공한 브랜드와 함께하는 차별화된 네트워크.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styles */
+        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
+        .serif { font-family: 'Noto Serif KR', serif; }
+        
+        /* Tab Logic */
+        .tab-content { display: none; animation: fadeIn 0.5s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Tab Button Styles */
+        .tab-btn.active { border-bottom: 3px solid #b4975a; color: #111; font-weight: 700; }
+        
+        /* Custom Utilities */
+        .text-gold { color: #b4975a; }
+        .bg-gold { background-color: #b4975a; }
+        .border-gold { border-color: #b4975a; }
+        
+        .korean-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* --- Hero Section Background (TAB 1 상단) --- */
+        .hero-bg-desktop {
+            display: none;
+            grid-template-columns: 1fr 1fr 1fr;
+            height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .hero-bg-desktop { display: grid; }
+        }
+        .hero-bg-desktop img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
+        }
+
+        .hero-bg-mobile {
+            display: block;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('./images/images_2.png');
+            background-size: cover; background-position: center;
+            z-index: 0; opacity: 0.7;
+        }
+        @media (min-width: 768px) {
+            .hero-bg-mobile { display: none; }
+        }
+        
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9));
+            z-index: 1;
+        }
+
+        /* --- Success Section Background (성공한 브랜드) --- */
+        .success-section-mobile-bg { position: relative; }
+        
+        @media (max-width: 767px) {
+            .success-section-mobile-bg {
+                padding-top: 5rem; padding-bottom: 5rem; overflow: hidden;
+            }
+            .success-section-mobile-bg::before {
+                content: ""; position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background-image: url('./images/images_3.jpg');
+                background-size: cover; background-position: center;
+                opacity: 0.4; z-index: -2;
+            }
+            .success-section-mobile-bg::after {
+                 content: ""; position: absolute;
+                 top: 0; left: 0; right: 0; bottom: 0;
+                 background-color: rgba(15, 23, 42, 0.85); z-index: -1;
+            }
+            
+            .success-box-mobile {
+                background-color: rgba(0, 0, 0, 0.6) !important; 
+                border: 1px solid rgba(180, 151, 90, 0.5); 
+                backdrop-filter: blur(8px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            .success-box-text-mobile {
+                color: #ffffff !important;
+                font-weight: 500;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800 antialiased selection:bg-yellow-200 selection:text-slate-900">
+
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" onclick="switchTab('brand'); return false;" class="text-2xl font-bold serif text-slate-900 tracking-tighter hover:opacity-80 transition-opacity">
+                리움한방네트워크
+            </a>
+            <nav class="flex space-x-8 h-full">
+                <button onclick="switchTab('brand')" id="btn-brand" class="tab-btn active h-full px-4 text-lg text-slate-500 hover:text-slate-900 transition-colors">Brand</button>
+                <button onclick="switchTab('consult')" id="btn-consult" class="tab-btn h-full px-4 text-lg text-slate-500 hover:text-slate-900 transition-colors">Consult</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+        <div id="brand" class="tab-content active">
+            
+            <section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
+                <div class="hero-bg-desktop">
+                    <img src="./images/images_1.jpg" alt="리움한방병원 외관 1">
+                    <img src="./images/images_2.png" alt="리움한방병원 로비">
+                    <img src="./images/images_3.jpg" alt="리움한방병원 외관 2">
+                </div>
+                <div class="hero-bg-mobile"></div>
+                <div class="hero-overlay"></div>
+                
+                <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+                    <p class="text-lg md:text-xl text-stone-300 mb-6 serif tracking-widest uppercase">한방 의료기관의 High-end 브랜드</p>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 serif leading-tight">
+                        리움한방병원 <span class="text-stone-400 font-light">&</span> 리움한의원
+                    </h1>
+                    <div class="w-20 h-1 bg-gold mx-auto mb-8"></div>
+                    <p class="text-xl md:text-2xl font-light opacity-95 leading-relaxed">
+                        남들과는 다른 차별화된 네트워크,<br>
+                        <span class="font-bold text-white">리움</span>에서 시작합니다.
+                    </p>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 items-center success-section-mobile-bg">
+                <div class="py-12 md:py-24">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-12 serif leading-snug text-white md:text-slate-900 md:text-center relative z-10">
+                        <span class="relative inline-block mr-1">
+                            <div class="absolute -top-5 left-0 w-full flex justify-between px-2 items-end h-4">
+                               <span class="w-2 h-2 rounded-full bg-white md:bg-slate-900 -rotate-12 mb-1"></span>
+                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
+                               <span class="w-2.5 h-2.5 rounded-full bg-red-600 mb-2 shadow-sm"></span>
+                               <span class="w-2 h-1.5 rounded-full bg-white md:bg-slate-900 rotate-12 mb-1"></span>
+                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
+                            </div>
+                            성공한 브랜드
+                        </span>와 <br class="md:hidden">함께하는 것이 중요합니다.
+                    </h2>
+
+                    <p class="text-lg text-stone-200 md:text-slate-600 mb-12 font-medium border-l-4 border-gold pl-4 md:text-center md:border-none md:pl-0">
+                        신뢰를 바탕으로 한 리움의 차별화된 서비스 및 전략
+                    </p>
+                    
+                    <ul class="space-y-8 text-stone-300 md:text-slate-700 text-lg max-w-3xl mx-auto">
+                        <li class="flex items-start">
+                            <span class="text-gold mr-4 mt-1 font-bold text-2xl flex-shrink-0">✓</span>
+                            <p><span class="font-bold text-white md:text-slate-900 text-xl">다양한 규모의 개원 노하우 보유:</span><br> 지방부터 서울 메이저 지역, 월 매출 5천에서 10억까지 다양한 규모의 성공 경험 보유</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gold mr-4 mt-1 font-bold text-2xl flex-shrink-0">✓</span>
+                            <p><span class="font-bold text-white md:text-slate-900 text-xl">신뢰 기반의 솔루션:</span><br> 풍부한 노하우의 대표가 직접 개원 솔루션에 참여합니다.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-gold mr-4 mt-1 font-bold text-2xl flex-shrink-0">✓</span>
+                            <p><span class="font-bold text-white md:text-slate-900 text-xl">대표원장 역량 강화:</span><br> 지점 성장뿐 만이 아니라 원장님의 역량 강화에도 함께합니다.</p>
+                        </li>
+                    </ul>
+
+                    <div class="mt-16 p-8 bg-stone-100 rounded-2xl max-w-3xl mx-auto shadow-sm success-box-mobile">
+                        <p class="text-slate-800 md:text-slate-800 font-bold text-xl text-center serif leading-relaxed success-box-text-mobile">
+                            "풍부한 노하우를 바탕으로 대표가 직접 개원을 함께합니다."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-stone-100 korean-pattern">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 serif text-slate-900">리움의 차별화된 개원 솔루션</h2>
+                        <p class="text-slate-600 max-w-2xl mx-auto">
+                            최단기간 최고매출 달성 및 사후관리까지,<br>
+                            대표부터 전문인력이 준비과정 곳곳에서 최상의 솔루션을 제시합니다.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-slate-800 group rounded-lg">
+                            <div class="text-4xl mb-4">📍</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">개원입지 분석</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>개원지역 설정</li>
+                                <li>희망지역 타당성평가</li>
+                                <li>부동산 물건조사</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">👥</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">인력구성</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>필요인력 조사</li>
+                                <li>직원세팅 및 면접</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">🏗️</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">인테리어</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>최적 동선 및 구조</li>
+                                <li>시공일정 및 감리</li>
+                                <li>전 과정 밀착 관리</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">💊</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">장비·약품 구매</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>필요 물품리스트 체크</li>
+                                <li>의료장비 구매 및 세팅</li>
+                                <li>약품 수급 라인 구축</li>
+                            </ul>
+                        </div>
+                         <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">📈</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">마케팅 설정</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>자사 마케팅팀(비용절감)</li>
+                                <li>온·오프라인 통합 마케팅</li>
+                                <li>컨텐츠 최적화 솔루션</li>
+                            </ul>
+                        </div>
+                         <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">📚</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">진료·서비스 교육</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>개원 전 진료교육</li>
+                                <li>직원 CS 및 매뉴얼</li>
+                            </ul>
+                        </div>
+                         <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-stone-300 hover:border-gold group rounded-lg">
+                            <div class="text-4xl mb-4">📝</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">개설 인허가</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>등록 행정업무 지원</li>
+                                <li>보건소 인허가 서포트</li>
+                            </ul>
+                        </div>
+                         <div class="bg-white p-8 shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-slate-800 group rounded-lg">
+                            <div class="text-4xl mb-4">🤝</div>
+                            <h3 class="text-xl font-bold mb-4 text-slate-900">경영 서포트</h3>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>개원 이후 경영지원</li>
+                                <li>지속적인 사후관리</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 w-full bg-slate-900 text-white relative overflow-hidden">
+                <div class="absolute inset-0">
+                    <img src="./images/images_4.jpg" class="w-full h-full object-cover opacity-70 mix-blend-overlay">
+                </div>
+                
+                <div class="relative z-10 max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 serif">리움한방네트워크 개원현황</h2>
+                        <div class="w-12 h-1 bg-white/20 mx-auto"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12 lg:gap-24">
+                        <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
+                            <h3 class="text-2xl font-bold text-gold mb-6 pb-4 border-b border-white/10 flex items-center justify-between">
+                                리움한방병원
+                                <span class="text-xs bg-slate-800 text-white px-2 py-1 rounded font-sans font-normal border border-slate-700">Hospital</span>
+                            </h3>
+                            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                                * 암 전문 요양치료, 수술 후 재활치료<br>
+                                * 지점별 차별화된 외래진료센터 운영
+                            </p>
+                            <ul class="space-y-3 text-lg font-light">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-white rounded-full mr-3"></span>강동송파점</li>
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-white rounded-full mr-3"></span>종로점</li>
+                                <li class="flex items-center text-slate-500"><span class="w-1.5 h-1.5 bg-slate-500 rounded-full mr-3"></span>목동점 (개원준비중)</li>
+                                <li class="flex items-center text-slate-500"><span class="w-1.5 h-1.5 bg-slate-500 rounded-full mr-3"></span>부산점 (개원준비중)</li>
+                            </ul>
+                            <div class="mt-8 p-4 bg-red-900/30 border border-red-900/50 rounded text-sm text-red-200">
+                                ※ 현재 한방병원은 신규 상담을 받고 있지 않습니다.
+                            </div>
+                        </div>
+
+                        <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
+                            <h3 class="text-2xl font-bold text-gold mb-6 pb-4 border-b border-white/10 flex items-center justify-between">
+                                리움한의원
+                                <span class="text-xs bg-slate-800 text-white px-2 py-1 rounded font-sans font-normal border border-slate-700">Clinic</span>
+                            </h3>
+                            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                                * 피부, 다이어트 기반 진료<br>
+                                * 교정치료 및 통증치료 특화
+                            </p>
+                            <ul class="space-y-3 text-lg font-light">
+                                <li class="flex items-center"><span class="w-1.5 h-1.5 bg-white rounded-full mr-3"></span>둔촌포레온점</li>
+                                <li class="flex items-center text-slate-500"><span class="w-1.5 h-1.5 bg-slate-500 rounded-full mr-3"></span>잠실점 (개원준비중)</li>
+                            </ul>
+                            <div class="mt-8 p-4 bg-blue-900/30 border border-blue-900/50 rounded text-sm text-blue-200">
+                                ※ 한의원은 서울 강동·송파구 개원 우대
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="consult" class="tab-content">
+            <section class="py-24 bg-stone-50">
+                <div class="max-w-4xl mx-auto px-6 text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold serif text-slate-900 mb-12">저희는 <span class="text-gold decoration-4 underline-offset-4 underline">신뢰</span>로 컨설팅합니다.</h2>
+                    
+                    <div class="prose prose-lg mx-auto text-slate-600 leading-loose">
+                        <p class="mb-8">
+                            SNS나 광고를 보면 자극적인 문구들이 넘쳐납니다.<br>
+                            <span class="bg-red-50 text-red-800 px-2 py-1 font-bold rounded block mb-2">"6개월 만에 매출 2배, 3배..."</span>
+                            <span class="bg-red-50 text-red-800 px-2 py-1 font-bold rounded block">"3달 만에 신환 3배, 4배…"</span>
+                        </p>
+                        
+                        <p class="mb-10 font-bold text-slate-800 text-lg md:text-xl leading-relaxed">
+                            세상에 공짜는 없습니다.<br>
+                            노력 없이 업체 하나 쓴다고 <br class="md:hidden"> 
+                            병원이 확 바뀌지는 않습니다.<br>
+                            원장님이 이해하고, 배우고, <br class="md:hidden"> 
+                            바뀌셔야 합니다.
+                        </p>
+
+                        <p>
+                            무엇을 물어봐야 할지조차 막막한 원장님께,<br>
+                            저희가 오랜 기간 쌓아온 노하우를 책을 읽어드리듯<br>
+                            가장 빠르고 확실한 변화의 솔루션을 제공해 드립니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="h-[700px] rounded-xl overflow-hidden shadow-2xl relative group">
+                        <img src="./images/consult-meeting.png" alt="Consulting Meeting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-3xl font-bold mb-10 serif text-slate-900 leading-tight">컨설팅, <br>믿을 만한 사람에게 받으셔야 합니다.</h2>
+                        
+                        <div class="space-y-8 text-slate-700">
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-xl mr-4">01</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900 mb-2">실전 경험</h4>
+                                    <p class="text-sm leading-relaxed">지방에서부터 서울 메이저 지역까지, 월 매출 5천에서 10억까지 다양한 규모에서 직접 개원하고 운영한 경험이 있습니다.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-xl mr-4">02</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900 mb-2">마케팅 전문성</h4>
+                                    <p class="text-sm leading-relaxed">GFA 등을 대표가 직접 관리하며 실무 감각을 유지하고 있습니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-xl mr-4">03</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900 mb-2">원내 실무 전문성</h4>
+                                    <p class="text-sm leading-relaxed">저는 대표원장으로써 진료는 물론, 아직도 가끔씩 전화상담을 직접 할 때도 있습니다. 동종업계에서 실무에 대한 전문성은 제가 최고라고 자부합니다. HR, CS, CRM 등도 대표로서 실무가 잘 이루어지고 있는지 확인하고, 지금도 직접 교육하기도 합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-xl mr-4">04</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900 mb-2">지점별 역량 강화</h4>
+                                    <p class="text-sm leading-relaxed">단기적인 교육으로 끝나지 않고, 지점별 원장님의 역량 강화를 목표로 합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-slate-800 mt-8">
+                                <p class="font-bold text-slate-900 text-lg">
+                                    "컨설팅 미팅은 반드시 대표인 제가 직접 참여를 원칙으로 하고 있습니다."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="relative py-32 bg-slate-900 text-white text-center overflow-hidden">
+                <div class="absolute inset-0 opacity-40">
+                     <img src="./images/bg-texture.jpg" class="w-full h-full object-cover grayscale">
+                </div>
+                
+                <div class="relative z-10 max-w-4xl mx-auto px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold serif mb-8">원장님과 저, 그리고 한의학계의 발전을 위합니다.</h2>
+                    <p class="text-xl font-light text-slate-300 mb-16 leading-relaxed">
+                        우선적으로는 병원의 매출을 위해서,<br>
+                        나아가 전반적인 한의학계의 발전을 위해 함께 걷겠습니다.
+                    </p>
+                    
+                    <div class="inline-block border border-gold bg-slate-800/90 px-12 py-10 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer group">
+                        <h3 class="text-lg text-gold mb-3 font-bold uppercase tracking-widest">Consulting Inquiry</h3>
+                        <p class="text-sm text-slate-400 mb-6">컨설팅 문의 및 상담</p>
+                        <a href="tel:010-2922-1245" class="text-3xl md:text-4xl font-bold group-hover:text-gold transition-colors">010-2922-1245</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-white py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-bold text-slate-800 text-xl serif mb-4">리움한방네트워크</p>
+            <div class="text-sm text-slate-500 space-y-2">
+                <p>상호명: 주식회사 새로움 | 대표자: 도성국</p>
+                <p>사업자등록번호: 377-87-03742</p>
+                <p>주소: 서울특별시 강동구 양재대로 85길 23, 4561호</p>
+                <p class="mt-4 pt-4 border-t border-slate-100 w-48 mx-auto">Copyright © REUM NETWORK. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => {
+                el.classList.remove('active');
+                el.style.display = 'none'; 
+            });
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            const selected = document.getElementById(tabId);
+            selected.style.display = 'block';
+            setTimeout(() => {
+                selected.classList.add('active');
+            }, 10);
+            document.getElementById('btn-' + tabId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
