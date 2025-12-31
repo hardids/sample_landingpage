@@ -101,11 +101,11 @@
             }
         }
 
-        /* --- [NEW] 점 간격 미세 조정 --- */
+        /* --- [NEW] 반응형 점 색상 및 간격 --- */
         .char-dot {
             position: relative;
             display: inline-block;
-            margin-right: 1px; /* 점 사이 간격 미세 조정 (숫자가 클수록 넓어짐) */
+            margin-right: 1px; /* 점 사이 간격 */
         }
         .char-dot::after {
             content: '·';
@@ -113,10 +113,19 @@
             top: -0.8em; 
             left: 50%;
             transform: translateX(-50%);
-            color: #000000;
             font-weight: 800;
+            
+            /* [수정됨] 기본(모바일)은 흰색 점 */
+            color: #ffffff; 
         }
-        /* 마지막 글자 여백 제거 */
+        
+        /* [수정됨] 데스크탑(768px 이상)에서는 검은색 점으로 변경 */
+        @media (min-width: 768px) {
+            .char-dot::after {
+                color: #000000;
+            }
+        }
+
         .char-dot:last-child {
             margin-right: 0;
         }
@@ -290,7 +299,8 @@
                         <div class="w-12 h-1 bg-white/20 mx-auto"></div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-12 lg:gap-24 mb-16"> <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
+                    <div class="grid md:grid-cols-2 gap-12 lg:gap-24 mb-16">
+                        <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
                             <h3 class="text-2xl font-bold text-gold mb-6 pb-4 border-b border-white/10 flex items-center justify-between">
                                 리움한방병원
                                 <span class="text-xs bg-slate-800 text-white px-2 py-1 rounded font-sans font-normal border border-slate-700">Hospital</span>
