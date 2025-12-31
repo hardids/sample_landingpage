@@ -101,28 +101,24 @@
             }
         }
 
-        /* --- [NEW] 강조점 스타일 추가 --- */
-        /* '성공': 빨간색 점 */
-        .dot-accent {
-            -webkit-text-emphasis: '·' #ffffff; /* red-600 */
-            text-emphasis: '·' #ffffff;
-            -webkit-text-emphasis-position: over;
-            text-emphasis-position: over;
+        /* --- [NEW] 점 간격 미세 조정 --- */
+        .char-dot {
+            position: relative;
+            display: inline-block;
+            margin-right: 1px; /* 점 사이 간격 미세 조정 (숫자가 클수록 넓어짐) */
         }
-
-        /* '한 브랜드': 반응형 점 (모바일:흰색 / 데스크탑:검정) */
-        .dot-base {
-            -webkit-text-emphasis: '·' #ffffff; /* Mobile: White */
-            text-emphasis: '·' #ffffff;
-            -webkit-text-emphasis-position: over;
-            text-emphasis-position: over;
+        .char-dot::after {
+            content: '·';
+            position: absolute;
+            top: -0.8em; 
+            left: 50%;
+            transform: translateX(-50%);
+            color: #000000;
+            font-weight: 800;
         }
-
-        @media (min-width: 768px) {
-            .dot-base {
-                -webkit-text-emphasis-color: #0f172a; /* Desktop: Slate-900 */
-                text-emphasis-color: #0f172a;
-            }
+        /* 마지막 글자 여백 제거 */
+        .char-dot:last-child {
+            margin-right: 0;
         }
     </style>
 </head>
@@ -169,7 +165,8 @@
             <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 items-center success-section-mobile-bg">
                 <div class="py-12 md:py-24">
                     <h2 class="text-3xl md:text-5xl font-bold mb-12 serif leading-snug text-white md:text-slate-900 md:text-center relative z-10">
-                        <span class="dot-base">성공</span><span class="dot-base">한 브랜드</span>와 <br class="md:hidden">함께하는 것이 중요합니다.
+                        <span class="char-dot">성</span><span class="char-dot">공</span><span class="char-dot">한</span> 
+                        <span class="char-dot">브</span><span class="char-dot">랜</span><span class="char-dot">드</span>와 <br class="md:hidden">함께하는 것이 중요합니다.
                     </h2>
 
                     <p class="text-lg text-stone-200 md:text-slate-600 mb-12 font-medium border-l-4 border-gold pl-4 md:text-center md:border-none md:pl-0">
@@ -293,8 +290,7 @@
                         <div class="w-12 h-1 bg-white/20 mx-auto"></div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-12 lg:gap-24">
-                        <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
+                    <div class="grid md:grid-cols-2 gap-12 lg:gap-24 mb-16"> <div class="relative border-2 border-gold/50 rounded-2xl p-8 bg-slate-800/50 backdrop-blur-sm hover:border-gold transition-colors">
                             <h3 class="text-2xl font-bold text-gold mb-6 pb-4 border-b border-white/10 flex items-center justify-between">
                                 리움한방병원
                                 <span class="text-xs bg-slate-800 text-white px-2 py-1 rounded font-sans font-normal border border-slate-700">Hospital</span>
@@ -332,6 +328,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="text-center">
+                        <div class="inline-block border border-gold bg-slate-800/90 px-12 py-10 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer group">
+                            <h3 class="text-lg text-gold mb-3 font-bold uppercase tracking-widest">브랜드 가맹 문의</h3>
+                            <a href="tel:010-2922-1245" class="text-3xl md:text-4xl font-bold group-hover:text-gold transition-colors">010-2922-1245</a>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </div>
@@ -431,8 +435,7 @@
                     </p>
                     
                     <div class="inline-block border border-gold bg-slate-800/90 px-12 py-10 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer group">
-                        <h3 class="text-lg text-gold mb-3 font-bold uppercase tracking-widest">Consulting Inquiry</h3>
-                        <p class="text-sm text-slate-400 mb-6">컨설팅 문의 및 상담</p>
+                        <h3 class="text-lg text-gold mb-3 font-bold uppercase tracking-widest">브랜드 가맹 문의</h3>
                         <a href="tel:010-2922-1245" class="text-3xl md:text-4xl font-bold group-hover:text-gold transition-colors">010-2922-1245</a>
                     </div>
                 </div>
@@ -448,7 +451,7 @@
                 <p>상호명: 주식회사 새로움 | 대표자: 도성국</p>
                 <p>사업자등록번호: 377-87-03742</p>
                 <p>주소: 서울특별시 강동구 양재대로 85길 23, 4561호</p>
-                <p class="mt-4 pt-4 border-t border-slate-100 w-48 mx-auto">Copyright © REUM NETWORK. All Rights Reserved.</p>
+                <p class="mt-4 pt-4 border-t border-slate-100 w-48 mx-auto">Copyright © 리움한방네트워크 All Rights Reserved.</p>
             </div>
         </div>
     </footer>
