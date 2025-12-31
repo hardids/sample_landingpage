@@ -100,6 +100,30 @@
                 text-shadow: 0 1px 2px rgba(0,0,0,0.8);
             }
         }
+
+        /* --- [NEW] 강조점 스타일 추가 --- */
+        /* '성공': 빨간색 점 */
+        .dot-accent {
+            -webkit-text-emphasis: '·' #ffffff; /* red-600 */
+            text-emphasis: '·' #ffffff;
+            -webkit-text-emphasis-position: over;
+            text-emphasis-position: over;
+        }
+
+        /* '한 브랜드': 반응형 점 (모바일:흰색 / 데스크탑:검정) */
+        .dot-base {
+            -webkit-text-emphasis: '·' #ffffff; /* Mobile: White */
+            text-emphasis: '·' #ffffff;
+            -webkit-text-emphasis-position: over;
+            text-emphasis-position: over;
+        }
+
+        @media (min-width: 768px) {
+            .dot-base {
+                -webkit-text-emphasis-color: #0f172a; /* Desktop: Slate-900 */
+                text-emphasis-color: #0f172a;
+            }
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-slate-800 antialiased selection:bg-yellow-200 selection:text-slate-900">
@@ -145,17 +169,7 @@
             <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 items-center success-section-mobile-bg">
                 <div class="py-12 md:py-24">
                     <h2 class="text-3xl md:text-5xl font-bold mb-12 serif leading-snug text-white md:text-slate-900 md:text-center relative z-10">
-                        <span class="relative inline-block mr-1">
-                            <div class="absolute -top-5 left-0 w-full flex justify-between px-1 h-3 items-end">
-                               <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-                               <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
-                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
-                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
-                               <span class="w-1.5 h-1.5 rounded-full bg-white md:bg-slate-900"></span>
-                            </div>
-                            성공한 브랜드
-                        </span>와 <br class="md:hidden">함께하는 것이 중요합니다.
+                        <span class="dot-base">성공</span><span class="dot-base">한 브랜드</span>와 <br class="md:hidden">함께하는 것이 중요합니다.
                     </h2>
 
                     <p class="text-lg text-stone-200 md:text-slate-600 mb-12 font-medium border-l-4 border-gold pl-4 md:text-center md:border-none md:pl-0">
